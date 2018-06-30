@@ -1,0 +1,31 @@
+  <!DOCTYPE html>
+<html>
+    <head>
+        <!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--Import materialize.css-->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/materialize.min.css') }}">
+
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        
+        <title>Page not found</title>
+    </head>
+
+    <body class="yellow accent-3">
+        
+        PAGE NOT FOUND
+        
+        <!--Import jQuery before materialize.js-->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="{{ url_for('static', filename='js/materialize.min.js') }}"></script>
+        
+        <script>
+            $(document).ready(function(){
+                $('.modal').modal();
+                $('select').material_select();
+            });
+        </script>
+        
+    </body>
+</html>
