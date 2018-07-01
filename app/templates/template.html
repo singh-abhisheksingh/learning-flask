@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--Import materialize.css-->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/materialize.min.css') }}">
+
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        
+        <title>Stock Price Predictor</title>
+    </head>
+
+    <body class="container yellow accent-3" style="min-height: 100vh">
+            <nav style="position:fixed;top:0;left:0;width:100%;">
+                <div class="nav-wrapper purple accent-4">
+                    <img class="circle" src="{{ url_for('static', filename='images/Capture2.jpg') }}" id="mhrd" style="max-width: 85px;">
+                    <style>
+                        @media only screen and (max-width: 992px) {
+                            #mhrd{
+                                display: none;
+                            }
+                        }
+                    </style>
+                    <a href="#!" class="brand-logo" style="font-size: 1.4rem;">Stock Price Predictor</a>
+                    <style>
+                        @media only screen and (min-width: 992px) {
+                            .brand-logo{
+                                margin-left: 33%;
+                            }
+                        }
+                    </style>
+                    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+                    <ul class="right hide-on-med-and-down">
+                        {% for t in TOPIC_LIST %}
+                        <li><a href="{{ t[1] }}">{{ t[0] }}</a></li>
+                        {% endfor %}
+                    </ul>
+                    <ul class="side-nav" id="mobile-demo">
+                        {% for t in TOPIC_LIST %}
+                        <li><a href="{{ t[1] }}">{{ t[0] }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </nav>
+
+{% block body %} {% endblock %}
+
+            <footer class="page-footer purple accent-4" style="position:fixed;bottom:0;left:0;width:100%;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col l6 s12">
+                            <h5 class="white-text">Subscribe Us</h5>
+                            <p class="grey-text text-lighten-4">Subscribe to us to stay updated.</p>
+                        </div>
+                        <div class="col l4 offset-l2 s12">
+                            <h5 class="white-text">Links</h5>
+                            <ul>
+                                <li><a class="grey-text text-lighten-3" href="#!">Contact Us</a></li>
+                                <li><a class="grey-text text-lighten-3" href="#!">About Us</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-copyright">
+                    <div class="container">
+                        © 2018 Copyright Content
+                        <a class="grey-text text-lighten-4 right" href="https://innovate.mygov.in/sih2018/">SIH 2018</a>
+                    </div>
+                </div>
+            </footer>
+        
+        <!--Import jQuery before materialize.js-->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="{{ url_for('static', filename='js/materialize.min.js') }}"></script>
+
+        <script>
+            $(document).ready(function(){
+                $(".button-collapse").sideNav();
+            });
+        </script>
+    </body>
+</html>
