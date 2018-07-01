@@ -16,6 +16,12 @@ def index():
 def page_not_found(e):
     return render_template("404.html")
 
+############# TEMPLATE PAGE ################
+
+@app.route('/template/')
+def template():
+	return render_template("template.html")
+
 
 if __name__ == "__main__":
 	app.run()
