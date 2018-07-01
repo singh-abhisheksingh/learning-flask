@@ -10,6 +10,15 @@ app = Flask(__name__)
 def index():
 	return render_template("index.html", TOPIC_LIST=TOPIC_LIST)
 
+############# ERROR HANDLING #############
+
+@app.route('/main/')
+def main():
+	try:
+		return render_template("index.html", TOPIC_LIST=UNDEFINED_TOPIC_LIST)
+	except Exception as e:
+		return str(e)
+
 ######## PAGE NOT FOUND ERROR #############
 	
 @app.errorhandler(404)
