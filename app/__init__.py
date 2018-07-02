@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, flash
 
 from contentManagement import Content
 
@@ -10,6 +10,15 @@ app = Flask(__name__)
 def index():
 	return render_template("index.html", TOPIC_LIST=TOPIC_LIST)
 
+############ FLASH MESSAGING #############
+
+@app.route('/nextpage/')
+def nextpage():
+	flash("flash test !!!")
+	flash("flashing it again !!!")
+	flash("flash once more :-p")
+	return render_template("nextpage.html")
+	
 ############# ERROR HANDLING #############
 
 @app.route('/main/')
