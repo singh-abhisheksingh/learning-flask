@@ -3,6 +3,7 @@ from flask import Flask, render_template, flash
 from contentManagement import Content
 
 app = Flask(__name__)
+app.secret_key = "super secret key"
 
 ########### INDEX #######################
 
@@ -18,7 +19,7 @@ def nextpage():
 	flash("flashing it again !!!")
 	flash("flash once more :-p")
 	return render_template("nextpage.html")
-	
+
 ############# ERROR HANDLING #############
 
 @app.route('/main/')
