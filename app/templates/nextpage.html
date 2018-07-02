@@ -1,0 +1,22 @@
+{% extends "template.html" %}
+
+{% block body %}
+
+<div class="con" style="margin-top: 10%">
+    
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+               
+                <div class="chip">
+                    {{ message }}
+                <i class="close material-icons">close</i>
+                </div>
+                
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    
+</div>
+  
+{% endblock %}
