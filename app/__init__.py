@@ -35,6 +35,12 @@ def main():
 def page_not_found(e):
     return render_template("404.html")
 
+######## METHOD NOT FOUND ERROR ############
+
+@app.errorhandler(405)
+def method_not_found(e):
+    return render_template("405.html")
+
 ############# TEMPLATE PAGE ################
 
 @app.route('/template/')
