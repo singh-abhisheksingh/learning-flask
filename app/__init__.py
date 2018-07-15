@@ -1,6 +1,9 @@
 from flask import Flask, render_template, flash
+from flask import request, url_for, redirect
 
 from contentManagement import Content
+
+TOPIC_LIST = Content()
 
 app = Flask(__name__)
 app.secret_key = "super secret key"
@@ -10,6 +13,52 @@ app.secret_key = "super secret key"
 @app.route('/')
 def index():
 	return render_template("index.html", TOPIC_LIST=TOPIC_LIST)
+
+############ LOGIN ######################
+
+@app.route('/login/', methods = ['GET','POST'])
+def loginpage():
+	error = None
+	try:
+		print ("in try")
+		if request.method == "POST":
+			attempted_username = request.form['username']
+			attempted_password = request.form['password']
+			
+			# attempted_username = request.form.get('username')
+			# attempted_password = request.form.get('password')
+
+			print("in POST")
+			flash(attempted_username)
+			flash(attempted_password)
+			print(attempted_username)
+			print(attempted_password)
+
+			if attempted_username == "admin" and attempted_password == "password":
+				return redirect(url_for("template"))
+			else:
+				error = "Invalid Credentials. Try Again."
+		else:
+			attempted_username = request.args.get('username')
+			attempted_password = request.args.get('password')
+
+			print("in POST else")
+			flash(attempted_username)
+			flash(attempted_password)
+			print(attempted_username)
+			print(attempted_password)
+
+			if attempted_username == "admin" and attempted_password == "password":
+				return redirect(url_for("template"))
+			else:
+				error = "Invalid Credentials. Try Again."
+				
+		return render_template("login.html", error=error)
+
+	except Exception as e:
+		flash(e)
+		print("in except")
+		return render_template("login.html", error=error)
 
 ############ FLASH MESSAGING #############
 
