@@ -31,8 +31,6 @@ def loginpage():
 			print("in POST")
 			flash(attempted_username)
 			flash(attempted_password)
-			print(attempted_username)
-			print(attempted_password)
 
 			if attempted_username == "admin" and attempted_password == "password":
 				return redirect(url_for("template"))
